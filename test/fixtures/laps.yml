@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_volta: 1
+  nome_piloto: 1.5
+  hora: 1
+  tempo_volta: 1.5
+  velocidade_media: 1
+
+two:
+id_volta: 12
+nome_piloto: 1.5
+hora: 11
+tempo_volta: 1.5
+velocidade_media: 1
+
+three:
+id_volta: 1
+nome_piloto: 1.5
+hora: 1
+tempo_volta: 1.5
+velocidade_media: 16

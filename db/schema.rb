@@ -10,15 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_02_044419) do
+ActiveRecord::Schema.define(version: 2018_10_07_032702) do
 
-  create_table "users", force: :cascade do |t|
-    t.integer "steps"
-    t.float "distance"
-    t.integer "exercise"
-    t.float "sleep"
-    t.integer "calories"
-    t.string "user"
+  create_table "bubbles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "laps", force: :cascade do |t|
+    t.time "hora"
+    t.string "nome_piloto"
+    t.integer "id_volta"
+    t.time "tempo_volta"
+    t.decimal "velocidade_media"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

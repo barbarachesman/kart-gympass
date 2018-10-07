@@ -1,0 +1,35 @@
+<%= flash[:notice] %>
+<table>
+	<thead>
+		<!-- A partir de um input de um arquivo de log do formato acima, montar o resultado da corrida com as seguintes informações: Posição Chegada, Código Piloto, Nome Piloto, Qtde Voltas Completadas e Tempo Total de Prova. -->
+		<!-- <th>Posição Chegada</th>
+		<th>Código Piloto</th>
+		<th>Nome Piloto</th>
+		<th>Qtde Voltas Completadas</th>
+		<th>Tempo Total de Prova</th> -->
+		<!-- <h1>  -->
+		<th>Hora</th>
+		<th>Código/Nome Piloto</th>
+		<th>Nº Volta</th>
+		<th>Tempo Volta</th>
+		<th>Velocidade média da volta</th>
+	</thead>
+	<tbody>
+		<% @laps.each do |lap| %>
+			<tr>
+				<td><%= lap.hora %></td>
+				<td><%= lap.nome_piloto %></td>
+				<td><%= lap.id_volta %></td>
+				<td><%= lap.tempo_volta %></td>
+				<td><%= lap.velocidade_media %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<div>
+	<h4> Import that data! </h4>
+		<%= form_tag import_laps_path, multipart: true do %>
+		<%= file_field_tag :file %>
+		<%= submit_tag "Import CSV" %>
+		<% end %>
+</div>
