@@ -1,12 +1,17 @@
 <%= flash[:notice] %>
+<h4> Faça o upload dos dados da corrida em formato .csv </h4>
+
+<%= form_tag import_laps_path, multipart: true do %>
+<%= file_field_tag :file %>
+<%= submit_tag "Import CSV" %>
+
+<br>
+<br>
+<% end %>
 <table>
 	<thead>
-		<!-- A partir de um input de um arquivo de log do formato acima, montar o resultado da corrida com as seguintes informações: Posição Chegada, Código Piloto, Nome Piloto, Qtde Voltas Completadas e Tempo Total de Prova. -->
-		<!-- <th>Posição Chegada</th>
-		<th>Código Piloto</th>
-		<th>Nome Piloto</th>
-		<th>Qtde Voltas Completadas</th>
-		<th>Tempo Total de Prova</th> -->
+		<!-- montar o resultado da corrida com as seguintes informações: Posição Chegada, Código Piloto, Nome Piloto, Qtde Voltas Completadas e Tempo Total de Prova. -->
+
 		<!-- <h1>  -->
 		<th>Hora</th>
 		<th>Código/Nome Piloto</th>
@@ -17,19 +22,61 @@
 	<tbody>
 		<% @laps.each do |lap| %>
 			<tr>
-				<td><%= lap.hora %></td>
+				<td><%= lap.hora.strftime("%H:%M:%S:%L") %></td>
 				<td><%= lap.nome_piloto %></td>
 				<td><%= lap.id_volta %></td>
-				<td><%= lap.tempo_volta %></td>
+				<td><%= lap.tempo_volta.strftime("%H:%M:%S:%L") %></td>
 				<td><%= lap.velocidade_media %></td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
 <div>
-	<h4> Import that data! </h4>
-		<%= form_tag import_laps_path, multipart: true do %>
-		<%= file_field_tag :file %>
-		<%= submit_tag "Import CSV" %>
-		<% end %>
+	<h2> Dados importados! </h2>
+
+	<table>
+		<thead>
+			<th>Pilotos</th>
+
+		</thead>
+		<tbody>
+			<% @pilotos.each do |pil| %>
+				<tr>
+					<td><%= pil %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<br>
+
+	<h3> Descobrir a melhor volta da corrida </h3> <%= raw @menor %>
+	<h3> Descobrir a melhor volta de cada piloto </h3> <%= raw @menor %>
+	<h3> Calcular a velocidade média de cada piloto durante toda corrida </h3> <%= raw @menor %>
+	<h3> Descobrir a melhor volta da corrida </h3> <%= raw @menor %>
+	<h3> Descobrir quanto tempo cada piloto chegou após o vencedor </h3> <%= raw @menor %>
+	<br>	<br>	<br>
+
+	<br>
+	<table>
+		<thead>
+			<th>Posição Chegada</th>
+			<th>Nome Piloto</th>
+			<th>Qtde Voltas Completadas</th>
+			<th>Tempo Total de Prova</th>
+		</thead>
+		<tbody>
+			<% @pilotos.each do |pil| %>
+				<tr>
+					<td><%= pil %></td>
+					<td><%= pil %></td>
+					<td><%= pil %></td>
+					<td><%= pil %></td>
+
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+
 </div>
